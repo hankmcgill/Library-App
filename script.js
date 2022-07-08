@@ -1,7 +1,9 @@
+let container = document.querySelector(".container");
 let bookCardDiv = document.querySelector(".book-card");
 let totalBooks = 0;
+let myLibrary = [];
 
-const shining = new Book("Carrie", "Stephen King", 596, "have read");
+const shining = new Book("Shining", "Stephen King", 596, "have read");
 const notebook = new Book("The notebook", "mike", 56, "have not read");
 // const userBook = new Book(
 //   prompt("title?"),
@@ -9,8 +11,6 @@ const notebook = new Book("The notebook", "mike", 56, "have not read");
 //   prompt("page number?"),
 //   prompt("have you read it?")
 // );
-
-let myLibrary = [];
 
 function Book(title, author, pageNumber, haveRead) {
   this.title = title;
@@ -28,6 +28,7 @@ addBookToLibrary(shining);
 addBookToLibrary(notebook);
 // addBookToLibrary(userBook);
 
+//should be a nested function to create new divs within card div every time
 document.querySelector(".book-title").innerHTML =
   "TITLE: " + myLibrary[1].title;
 document.querySelector(".book-author").innerHTML =
@@ -37,12 +38,19 @@ document.querySelector(".book-pages").innerHTML =
 document.querySelector(".book-have-read").innerHTML =
   "HAVE I READ IT?: " + myLibrary[1].haveRead;
 
-for (i = 1; i <= totalBooks; i++) {
-  console.log("yes");
+for (i = 0; i < totalBooks; i++) {
   let newDiv = document.createElement("div");
-  // newDiv.id = "div" + i;
-  // newDiv.className = bookCardDiv;
-  // document.appendChild(newDiv);
+  newDiv.id = "div" + i;
+  newDiv.className = "book-card";
+  console.log(newDiv);
+  newDiv.innerHTML =
+    "TITLE: " +
+    myLibrary[i].title +
+    "AUTHOR: " +
+    myLibrary[i].author +
+    "PAGES: " +
+    myLibrary[i].pageNumber +
+    "HAVE I READ IT?: " +
+    myLibrary[i].haveRead;
+  container.appendChild(newDiv);
 }
-
-console.log(totalBooks);
