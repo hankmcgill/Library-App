@@ -4,14 +4,21 @@ body {
   background-color: palegoldenrod;
   font-style: italic;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  display: flex;
-  align-content: center;
 }
 
-button {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#top-button {
   height: 100px;
   width: 300px;
   background-color: skyblue;
+  font-size: large;
+  font-weight: bold;
 }
 
 .button-container {
@@ -24,22 +31,43 @@ button {
 
 .container {
   width: 500px;
-  background-color: lightcoral;
-  position: absolute;
-  margin-top: 20vh;
-  margin-left: 10vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding-left: 20vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px;
 }
 
 .book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 200px;
   width: 200px;
   background-color: skyblue;
   border: 3px solid black;
   border-radius: 8px;
   margin: 10px;
+  margin-left: 20px;
+}
+
+.book-text {
+  text-align: center;
+}
+
+.unread-button {
+  border-radius: 9px;
+  background-color: red;
+  opacity: 0.6;
+}
+
+.read-button {
+  border-radius: 9px;
+  background-color: green;
+  opacity: 0.6;
+}
+
+.delete-button {
+  opacity: 0.6;
+  background-color: aquamarine;
+  align-self: flex-end;
+  margin: 5px;
 }
