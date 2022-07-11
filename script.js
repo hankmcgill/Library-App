@@ -1,6 +1,7 @@
 let container = document.querySelector(".container");
 let bookCardDiv = document.querySelector(".book-card");
-let totalBooks = 0;
+let currentBookTotal = 0;
+let allTimeBookTotal = 0;
 let myLibrary = [];
 
 function Book(title, author, pageNumber, haveRead) {
@@ -8,17 +9,19 @@ function Book(title, author, pageNumber, haveRead) {
   this.author = author;
   this.pageNumber = pageNumber;
   this.haveRead = haveRead;
+  allTimeBookTotal++;
+  this.id = allTimeBookTotal;
 }
 
 function addBookToLibrary(newBook) {
   myLibrary.push(newBook);
-  totalBooks++;
+  currentBookTotal++;
 }
 
-function subtractBookFromLibrary(lastBook) {
-  myLibrary.pop(lastBook);
-  totalBooks--;
-  clearContainer();
+function subtractBookFromLibrary(value) {
+  let bookToDelete = myLibrary.findIndex((book) => book.id === value);
+  myLibrary.splice(bookToDelete, 1);
+  currentBookTotal--;
   makeList();
 }
 
@@ -29,24 +32,19 @@ function newEntry() {
     prompt("page number?")
   );
   addBookToLibrary(userBook);
-  clearContainer();
   makeList();
 }
 
-function clearContainer() {
-  container.innerHTML = "";
-}
-
-function makeDivContents(title, author, pages) {
+function makeDivContents(id, title, author, pages) {
   const newDiv = document.createElement("div");
   newDiv.className = "book-card";
-  const deleteBook = document.createElement("button");
-  deleteBook.className = "delete-button";
-  deleteBook.onclick = function () {
-    subtractBookFromLibrary();
+  const deleteButton = document.createElement("button");
+  deleteButton.className = "delete-button";
+  deleteButton.onclick = function () {
+    subtractBookFromLibrary(id);
   };
-  deleteBook.append("X");
-  newDiv.appendChild(deleteBook);
+  deleteButton.append("X");
+  newDiv.appendChild(deleteButton);
   const newBookTitle = document.createElement("h2");
   newBookTitle.className = "book-text";
   newBookTitle.append(title);
@@ -64,19 +62,17 @@ function makeDivContents(title, author, pages) {
   newBookHaveRead.className = "book-text";
   newBookHaveRead.append("I HAVEN'T READ THIS!");
   newBookHaveRead.onclick = function () {
-    // if (newBookHaveRead.className === "unread-button") {
-    // newBookHaveRead.className === "read-button";
     newBookHaveRead.innerHTML = "I READ IT ALREADY!";
-    // }
   };
-
   newDiv.appendChild(newBookHaveRead);
-  container.prepend(newDiv);
+  container.append(newDiv);
 }
 
 function makeList() {
-  for (i = 0; i < totalBooks; i++) {
+  container.innerHTML = "";
+  for (i = 0; i < currentBookTotal; i++) {
     makeDivContents(
+      myLibrary[i].id,
       myLibrary[i].title,
       myLibrary[i].author,
       myLibrary[i].pageNumber
