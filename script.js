@@ -8,7 +8,7 @@ function Book(title, author, pageNumber, haveRead) {
   this.title = title;
   this.author = author;
   this.pageNumber = pageNumber;
-  this.haveRead = haveRead;
+  this.haveRead = false;
   allTimeBookTotal++;
   this.id = allTimeBookTotal;
 }
@@ -35,34 +35,37 @@ function newEntry() {
   makeList();
 }
 
-function makeDivContents(id, title, author, pages) {
+function makeDivContents(book) {
   const newDiv = document.createElement("div");
   newDiv.className = "book-card";
   const deleteButton = document.createElement("button");
   deleteButton.className = "delete-button";
   deleteButton.onclick = function () {
-    subtractBookFromLibrary(id);
+    subtractBookFromLibrary(book.id);
   };
   deleteButton.append("X");
   newDiv.appendChild(deleteButton);
   const newBookTitle = document.createElement("h2");
   newBookTitle.className = "book-text";
-  newBookTitle.append(title);
+  newBookTitle.append(book.title);
   newDiv.appendChild(newBookTitle);
   const newBookAuthor = document.createElement("div");
   newBookAuthor.className = "book-text";
-  newBookAuthor.append("AUTHOR: " + author);
+  newBookAuthor.append("AUTHOR: " + book.author);
   newDiv.appendChild(newBookAuthor);
   const newBookPageNumber = document.createElement("div");
   newBookPageNumber.className = "book-text";
-  newBookPageNumber.append("PAGE NUMBER: " + pages);
+  newBookPageNumber.append("PAGE NUMBER: " + book.pages);
   newDiv.appendChild(newBookPageNumber);
   const newBookHaveRead = document.createElement("button");
   newBookHaveRead.className = "unread-button";
   newBookHaveRead.className = "book-text";
   newBookHaveRead.append("I HAVEN'T READ THIS!");
   newBookHaveRead.onclick = function () {
-    newBookHaveRead.innerHTML = "I READ IT ALREADY!";
+    book.haveRead = !book.haveRead;
+    newBookHaveRead.innerHTML = book.haveRead
+      ? "I'VE READ THIS!"
+      : "STILL HAVEN'T READ THIS!";
   };
   newDiv.appendChild(newBookHaveRead);
   container.append(newDiv);
@@ -71,11 +74,6 @@ function makeDivContents(id, title, author, pages) {
 function makeList() {
   container.innerHTML = "";
   for (i = 0; i < currentBookTotal; i++) {
-    makeDivContents(
-      myLibrary[i].id,
-      myLibrary[i].title,
-      myLibrary[i].author,
-      myLibrary[i].pageNumber
-    );
+    makeDivContents(myLibrary[i]);
   }
 }
