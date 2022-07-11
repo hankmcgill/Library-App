@@ -15,6 +15,13 @@ function addBookToLibrary(newBook) {
   totalBooks++;
 }
 
+function subtractBookFromLibrary(lastBook) {
+  myLibrary.pop(lastBook);
+  totalBooks--;
+  clearContainer();
+  makeList();
+}
+
 function newEntry() {
   const userBook = new Book(
     prompt("title?"),
@@ -35,6 +42,9 @@ function makeDivContents(title, author, pages) {
   newDiv.className = "book-card";
   const deleteBook = document.createElement("button");
   deleteBook.className = "delete-button";
+  deleteBook.onclick = function () {
+    subtractBookFromLibrary();
+  };
   deleteBook.append("X");
   newDiv.appendChild(deleteBook);
   const newBookTitle = document.createElement("h2");
@@ -57,7 +67,6 @@ function makeDivContents(title, author, pages) {
     // if (newBookHaveRead.className === "unread-button") {
     // newBookHaveRead.className === "read-button";
     newBookHaveRead.innerHTML = "I READ IT ALREADY!";
-    console.log("test");
     // }
   };
 
