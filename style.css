@@ -1,13 +1,28 @@
 body {
   height: 100vh;
   width: 100vw;
-  background-color: palegoldenrod;
+  /* background-color: palegoldenrod; */
+  background-image: linear-gradient(
+    to bottom right,
+    palegoldenrod,
+    palegoldenrod,
+    palegoldenrod,
+    palegoldenrod,
+    palegoldenrod,
+    palegoldenrod,
+    palegoldenrod,
+    palegoldenrod,
+    rgb(183, 118, 28)
+  );
   font-style: italic;
+  font-weight: bolder;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-shadow: 0.3px 0.3px 1px red;
 }
 
 button {
   background-color: palegoldenrod;
+  font-style: italic;
 }
 
 main {
@@ -21,8 +36,11 @@ main {
   height: 100px;
   width: 300px;
   background-color: skyblue;
-  font-size: large;
+  font-size: 30px;
   font-weight: bold;
+  border-radius: 9px;
+  box-shadow: 7px 7px 2px black;
+  text-shadow: 0.3px 0.3px 1px red;
 }
 
 .button-container {
@@ -48,9 +66,11 @@ main {
   width: 200px;
   background-color: skyblue;
   border: 3px solid black;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   margin: 10px;
   margin-left: 20px;
+  border-radius: 9px;
+  box-shadow: 7px 7px 2px black;
 }
 
 .book-text {
