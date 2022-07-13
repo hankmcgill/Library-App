@@ -43,6 +43,10 @@ main {
   text-shadow: 0.3px 0.3px 1px red;
 }
 
+#top-button:active {
+  transform: translateY(1.5px);
+}
+
 .button-container {
   width: 100vw;
   height: 20vh;
