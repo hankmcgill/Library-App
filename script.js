@@ -1,8 +1,8 @@
 let container = document.querySelector(".container");
 let bookCardDiv = document.querySelector(".book-card");
 let currentBookTotal = 0;
-let allTimeBookTotal = 0;
 let myLibrary = [];
+let allTimeBookTotal = 0;
 
 function Book(title, author, pageNumber, haveRead) {
   this.title = title;
@@ -11,6 +11,7 @@ function Book(title, author, pageNumber, haveRead) {
   this.haveRead = false;
   allTimeBookTotal++;
   this.id = allTimeBookTotal;
+  console.log(allTimeBookTotal);
 }
 
 function addBookToLibrary(newBook) {
