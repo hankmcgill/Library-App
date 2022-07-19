@@ -14,19 +14,19 @@ function Book(title, author, pageNumber, haveRead) {
   console.log(allTimeBookTotal);
 }
 
-function addBookToLibrary(newBook) {
+const addBookToLibrary = (newBook) => {
   myLibrary.push(newBook);
   currentBookTotal++;
-}
+};
 
-function subtractBookFromLibrary(value) {
+const subtractBookFromLibrary = (value) => {
   let bookToDelete = myLibrary.findIndex((book) => book.id === value);
   myLibrary.splice(bookToDelete, 1);
   currentBookTotal--;
   makeList();
-}
+};
 
-function newEntry() {
+const newEntry = () => {
   const userBook = new Book(
     prompt("title?"),
     prompt("author?"),
@@ -34,9 +34,9 @@ function newEntry() {
   );
   addBookToLibrary(userBook);
   makeList();
-}
+};
 
-function makeDivContents(book) {
+const makeDivContents = (book) => {
   const newDiv = document.createElement("div");
   newDiv.className = "book-card";
   const deleteButton = document.createElement("button");
@@ -70,11 +70,11 @@ function makeDivContents(book) {
   };
   newDiv.appendChild(newBookHaveRead);
   container.append(newDiv);
-}
+};
 
-function makeList() {
+const makeList = () => {
   container.innerHTML = "";
   for (i = 0; i < currentBookTotal; i++) {
     makeDivContents(myLibrary[i]);
   }
-}
+};
