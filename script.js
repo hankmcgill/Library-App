@@ -5,7 +5,7 @@ let myLibrary = [];
 let allTimeBookTotal = 0;
 
 class Book {
-  constructor(title, author, pageNumber, haveRead) {
+  constructor(title, author, pageNumber) {
     this.title = title;
     this.author = author;
     this.pageNumber = pageNumber;
