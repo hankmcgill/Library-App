@@ -4,14 +4,16 @@ let currentBookTotal = 0;
 let myLibrary = [];
 let allTimeBookTotal = 0;
 
-function Book(title, author, pageNumber, haveRead) {
-  this.title = title;
-  this.author = author;
-  this.pageNumber = pageNumber;
-  this.haveRead = false;
-  allTimeBookTotal++;
-  this.id = allTimeBookTotal;
-  console.log(allTimeBookTotal);
+class Book {
+  constructor(title, author, pageNumber, haveRead) {
+    this.title = title;
+    this.author = author;
+    this.pageNumber = pageNumber;
+    this.haveRead = false;
+    allTimeBookTotal++;
+    this.id = allTimeBookTotal;
+    console.log(pageNumber);
+  }
 }
 
 const addBookToLibrary = (newBook) => {
