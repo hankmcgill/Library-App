@@ -58,7 +58,7 @@ const makeDivContents = (book) => {
   newDiv.appendChild(newBookAuthor);
   const newBookPageNumber = document.createElement("div");
   newBookPageNumber.className = "book-text";
-  newBookPageNumber.append("PAGE NUMBER: " + book.pages);
+  newBookPageNumber.append("PAGE NUMBER: " + book.pageNumber);
   newDiv.appendChild(newBookPageNumber);
   const newBookHaveRead = document.createElement("button");
   newBookHaveRead.className = "unread-button";
